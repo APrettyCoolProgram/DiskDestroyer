@@ -1,10 +1,6 @@
 ﻿// 261107_code
 // 261107_documentation
 
-using System;
-using System.IO;
-using System.Threading.Tasks;
-
 namespace DiskDestroyer;
 
 class Program
@@ -27,22 +23,22 @@ class Program
         {
             var result = await FileWriter.WriteUntilDiskFullAsync(driveLetter: driveLetter, chunkSize: 1024 * 1024, maxFillPercentage: 95.0, cancellationToken: new CancellationTokenSource(TimeSpan.FromMinutes(30)).Token);
 
-            Console.WriteLine($"\n=== Write Complete ===");
+            Console.WriteLine($"{Environment.NewLine}=== Write Complete ==={Environment.NewLine}");
             Console.WriteLine($"Total bytes written: {result.TotalBytesWritten:N0} ({(double)result.TotalBytesWritten / (1024 * 1024 * 1024):F2} GB)");
             Console.WriteLine($"Final disk usage: {result.FinalDiskUsagePercent:F2}%");
             Console.WriteLine($"Statistics recorded: {result.Statistics.Count} entries");
         }
         catch (OperationCanceledException ex)
         {
-            Console.WriteLine($"\nOperation cancelled: {ex.Message}");
+            Console.WriteLine($"{Environment.NewLine}Operation cancelled: {ex.Message}");
         }
         catch (IOException ex)
         {
-            Console.WriteLine($"\nI/O Error: {ex.Message}");
+            Console.WriteLine($"{Environment.NewLine}I/O Error: {ex.Message}");
         }
         catch (InvalidOperationException ex)
         {
-            Console.WriteLine($"\nDisk Info Error: {ex.Message}");
+            Console.WriteLine($"{Environment.NewLine}Drive Info Error: {ex.Message}");
         }
     }
 
@@ -76,7 +72,7 @@ class Program
         }
 
         var driveInfo = new DriveInfo(driveLetter.ToString());
-        
+
         if (!driveInfo.IsReady)
         {
             throw new InvalidOperationException($"Drive {driveLetter} is not accessible.");
