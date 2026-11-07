@@ -19,16 +19,16 @@
 
 ***
 
-| CONTENTS                                    |
-|---------------------------------------------|
+| CONTENTS                                      |
+|-----------------------------------------------|
 | [About Disk Destroyer](#about-disk-destroyer) |
-| [How it works](#how-it-works)               |
-| [Getting started](#getting-started)         |
-| [Installing](#installing)                   |
-| [Usage](#usage)                             |
-| [Acknowledgements](#acknowledgements)       |
-| [Related projects](#related-projects)       |
-| [License](#license)                         |
+| [How it works](#how-it-works)                 |
+| [Getting started](#getting-started)           |
+| [Installing](#installing)                     |
+| [Usage](#usage)                               |
+| [Acknowledgements](#acknowledgements)         |
+| [Related projects](#related-projects)         |
+| [License](#license)                           |
 
 ***
 

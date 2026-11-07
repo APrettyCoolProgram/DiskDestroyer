@@ -25,11 +25,7 @@ class Program
 
         try
         {
-            var result = await FileWriter.WriteUntilDiskFullAsync(
-                driveLetter: driveLetter,
-                chunkSize: 1024 * 1024,      // 1MB chunks
-                maxFillPercentage: 95.0,     // Stop at 95% usage (safety limit)
-                cancellationToken: new CancellationTokenSource(TimeSpan.FromMinutes(30)).Token);
+            var result = await FileWriter.WriteUntilDiskFullAsync(driveLetter: driveLetter, chunkSize: 1024 * 1024, maxFillPercentage: 95.0, cancellationToken: new CancellationTokenSource(TimeSpan.FromMinutes(30)).Token);
 
             Console.WriteLine($"\n=== Write Complete ===");
             Console.WriteLine($"Total bytes written: {result.TotalBytesWritten:N0} ({(double)result.TotalBytesWritten / (1024 * 1024 * 1024):F2} GB)");
@@ -56,7 +52,7 @@ class Program
     internal static async Task ConfirmAndProceedAsync(char driveLetter)
     {
         var msg = $"{Environment.NewLine}" +
-                 $"WARNING: This will destroy data on drive {driveLetter}!{Environment.NewLine}" +
+                  $"WARNING: This will destroy data on drive {driveLetter}!{Environment.NewLine}" +
                   $"{Environment.NewLine}" +
                   $"This action is IRREVERSIBLE and may cause system instability.{Environment.NewLine}" +
                   $"{Environment.NewLine}" +
