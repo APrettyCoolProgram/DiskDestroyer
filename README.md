@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src=".github/logo/DiskDestroyer-512x1.png" alt="DiskDestroyer">
+  <img src=".github/logo/DiskDestroyer-512x512.png" alt="DiskDestroyer">
 
   ![RELEASE](https://img.shields.io/badge/version-1.0-teal)&nbsp;
   ![LICENSE](https://img.shields.io/badge/license-apache-blue)&nbsp;
