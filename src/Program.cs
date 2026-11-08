@@ -27,7 +27,10 @@ class Program
 
         try
         {
-            var result = await FileWriter.WriteUntilDiskFullAsync(driveLetter: driveLetter, chunkSize: chunkSizeInBytes, maxFillPercentage: 95.0, cancellationToken: new CancellationTokenSource(TimeSpan.FromMinutes(30)).Token);
+            var result = await FileWriter.WriteUntilDiskFullAsync(
+                driveLetter: driveLetter,
+                chunkSize: chunkSizeInBytes,
+                maxFillPercentage: 95.0);
 
             Console.WriteLine($"{Environment.NewLine}=== Write Complete ==={Environment.NewLine}");
             Console.WriteLine($"Total bytes written: {result.TotalBytesWritten:N0} ({(double)result.TotalBytesWritten / (1024 * 1024 * 1024):F2} GB)");

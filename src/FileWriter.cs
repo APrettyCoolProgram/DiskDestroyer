@@ -68,7 +68,8 @@ public static class FileWriter
                     }
                 }
 
-                double currentUsagePercent = (double)(currentFileSize + chunkSize) / diskInfo!.TotalSize * 100;
+                long projectedUsedSpace = diskInfo!.UsedSpace + chunkSize;
+                double currentUsagePercent = (double)projectedUsedSpace / diskInfo.TotalSize * 100;
 
                 if (currentUsagePercent >= maxFillPercentage)
                 {
@@ -94,7 +95,8 @@ public static class FileWriter
 
                 if (chunkCount % progressIntervalChunks == 0)
                 {
-                    Console.WriteLine($"Progress: {currentFileSize:N0} bytes ({(double)currentFileSize / diskInfo.TotalSize:P2})");
+                    Console.WriteLine(
+        $"Progress: file={currentFileSize:N0} bytes, disk={(double)diskInfo.UsedSpace / diskInfo.TotalSize:P2}");
                 }
             }
         }
@@ -109,6 +111,13 @@ public static class FileWriter
             throw;
         }
 
+        // after the try/catch, refresh disk info before final statistics
+        diskInfo ??= GetDiskSpace(filePath);
+        if (diskInfo != null && diskInfo.TotalSize > 0)
+        {
+            diskInfo = GetDiskSpace(filePath) ?? diskInfo;
+        }
+
         if (diskInfo != null && diskInfo.TotalSize > 0 &&
             (result.Statistics.Count == 0 || result.Statistics[^1].CumulativeBytes != currentFileSize))
         {
@@ -116,13 +125,13 @@ public static class FileWriter
                 timestamp: DateTime.UtcNow,
                 bytesWritten: 0,
                 cumulativeBytes: currentFileSize,
-                diskUsagePercent: (double)currentFileSize / diskInfo.TotalSize * 100));
+                diskUsagePercent: (double)diskInfo.UsedSpace / diskInfo.TotalSize * 100));
         }
 
         result.TotalBytesWritten = totalWritten;
 
-        result.FinalDiskUsagePercent = (currentFileSize > 0 && diskInfo != null)
-            ? (double)currentFileSize / diskInfo.TotalSize * 100
+        result.FinalDiskUsagePercent = (diskInfo != null && diskInfo.TotalSize > 0)
+            ? (double)diskInfo.UsedSpace / diskInfo.TotalSize * 100
             : 0;
 
         return result;
