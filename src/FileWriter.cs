@@ -16,6 +16,11 @@ public static class FileWriter
     /// <returns>Total bytes written and final disk usage statistics</returns>
     public static async Task<DiskWriteResult> WriteUntilDiskFullAsync(char driveLetter, long chunkSize = 1024 * 1024, double maxFillPercentage = 95.0, CancellationToken cancellationToken = default)
     {
+        if (chunkSize <= 0 || chunkSize > int.MaxValue)
+        {
+            throw new ArgumentOutOfRangeException(nameof(chunkSize), "Chunk size must be between 1 byte and Int32.MaxValue.");
+        }
+
         string filePath = $@"{driveLetter}:\disk_destroyer.dat";
         string msg      = $"Writing to {filePath}";
 
@@ -31,20 +36,39 @@ public static class FileWriter
         long currentFileSize    = 0;
         DiskSpaceInfo? diskInfo = null;
 
+        const int diskCheckIntervalChunks = 16;
+        const int statsIntervalChunks     = 8;
+        const int progressIntervalChunks  = 32;
+
+        int chunkCount = 0;
+
         try
         {
-            using var fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.Read);
+            using var fileStream = new FileStream(
+                filePath,
+                FileMode.Append,
+                FileAccess.Write,
+                FileShare.Read,
+                bufferSize: 1024 * 1024,
+                options: FileOptions.Asynchronous | FileOptions.SequentialScan);
+
+            currentFileSize = fileStream.Length;
+
+            var buffer = new byte[(int)chunkSize];
 
             while (!cancellationToken.IsCancellationRequested)
             {
-                diskInfo = GetDiskSpace(filePath);
-
-                if (diskInfo == null || diskInfo.TotalSize <= 0)
+                if (chunkCount % diskCheckIntervalChunks == 0)
                 {
-                    throw new InvalidOperationException("Unable to determine disk size");
+                    diskInfo = GetDiskSpace(filePath);
+
+                    if (diskInfo == null || diskInfo.TotalSize <= 0)
+                    {
+                        throw new InvalidOperationException("Unable to determine disk size");
+                    }
                 }
 
-                double currentUsagePercent = (double)(currentFileSize + chunkSize) / diskInfo.TotalSize * 100;
+                double currentUsagePercent = (double)(currentFileSize + chunkSize) / diskInfo!.TotalSize * 100;
 
                 if (currentUsagePercent >= maxFillPercentage)
                 {
@@ -52,22 +76,26 @@ public static class FileWriter
                     break;
                 }
 
-                byte[] buffer  = new byte[chunkSize];
-                var randomData = GenerateRandomBuffer(buffer);
-
-                await fileStream.WriteAsync(randomData, cancellationToken);
+                Random.Shared.NextBytes(buffer);
+                await fileStream.WriteAsync(buffer, cancellationToken);
 
                 currentFileSize += chunkSize;
                 totalWritten    += chunkSize;
+                chunkCount++;
 
-                result.Statistics.Add(new DiskWriteStatistics(timestamp: DateTime.UtcNow, bytesWritten: chunkSize, cumulativeBytes: currentFileSize, diskUsagePercent: currentUsagePercent));
+                if (chunkCount % statsIntervalChunks == 0)
+                {
+                    result.Statistics.Add(new DiskWriteStatistics(
+                        timestamp: DateTime.UtcNow,
+                        bytesWritten: chunkSize,
+                        cumulativeBytes: currentFileSize,
+                        diskUsagePercent: currentUsagePercent));
+                }
 
-                if (totalWritten % (chunkSize * 10) == 0 || totalWritten >= 1024L * 1024 * 1024)
+                if (chunkCount % progressIntervalChunks == 0)
                 {
                     Console.WriteLine($"Progress: {currentFileSize:N0} bytes ({(double)currentFileSize / diskInfo.TotalSize:P2})");
                 }
-
-                await Task.Delay(10, cancellationToken);
             }
         }
         catch (OperationCanceledException)
@@ -79,6 +107,16 @@ public static class FileWriter
             Console.WriteLine($"I/O error: {ex.Message}");
 
             throw;
+        }
+
+        if (diskInfo != null && diskInfo.TotalSize > 0 &&
+            (result.Statistics.Count == 0 || result.Statistics[^1].CumulativeBytes != currentFileSize))
+        {
+            result.Statistics.Add(new DiskWriteStatistics(
+                timestamp: DateTime.UtcNow,
+                bytesWritten: 0,
+                cumulativeBytes: currentFileSize,
+                diskUsagePercent: (double)currentFileSize / diskInfo.TotalSize * 100));
         }
 
         result.TotalBytesWritten = totalWritten;
@@ -106,29 +144,15 @@ public static class FileWriter
 
             DriveInfo driveInfo = new(drive);
 
-            return new DiskSpaceInfo(totalSize: driveInfo.TotalSize, freeSpace: driveInfo.AvailableFreeSpace, usedSpace: driveInfo.TotalSize - driveInfo.AvailableFreeSpace);
+            return new DiskSpaceInfo(
+                totalSize: driveInfo.TotalSize,
+                freeSpace: driveInfo.AvailableFreeSpace,
+                usedSpace: driveInfo.TotalSize - driveInfo.AvailableFreeSpace);
         }
         catch (Exception)
         {
-            var drive = Path.GetPathRoot(filePath);
-
             return new DiskSpaceInfo(totalSize: 0, freeSpace: 0, usedSpace: 0);
         }
-    }
-
-    /// <summary>
-    /// Generate random data for writing to avoid patterns.
-    /// </summary>
-    private static byte[] GenerateRandomBuffer(byte[] buffer)
-    {
-        var rng = new Random();
-
-        for (int i = 0; i < buffer.Length; i++)
-        {
-            buffer[i] = (byte)(rng.Next(256));
-        }
-
-        return buffer;
     }
 
     /// <summary>
@@ -160,6 +184,6 @@ public static class FileWriter
     {
         public long TotalSize { get; set; } = totalSize;
         public long FreeSpace { get; set; } = freeSpace;
-        public long UsedSpace { get; set; } = usedSpace; // Correct assignment
+        public long UsedSpace { get; set; } = usedSpace;
     }
 }
