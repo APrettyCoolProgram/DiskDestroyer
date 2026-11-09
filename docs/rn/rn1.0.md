@@ -17,7 +17,7 @@
 
 ***
 
-# About this release
+## About this release
 
 This is the initial release of Disk Destroyer.
 
