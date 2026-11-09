@@ -8,6 +8,7 @@
   ![RELEASE](https://img.shields.io/badge/version-1.0-teal)&nbsp;
   ![LICENSE](https://img.shields.io/badge/license-apache-blue)&nbsp;
   ![Platform](https://img.shields.io/badge/platform-windows-lightgrey)&nbsp;
+  ![.NET](https://img.shields.io/badge/.NET-10.0+-blueviolet)&nbsp;
 
 </div>
 
@@ -34,47 +35,148 @@
 
 ## About Disk Destroyer
 
-A brief description of the project, what it does, and who it's for. This should
-be a concise summary that gives readers a clear understanding of the project's
-purpose and value proposition.
+**DiskDestroyer** is a single-purpose C# console application designed to fill up a disk drive by writing random data until the specified usage threshold is reached. It's useful for stress testing storage systems, demonstrating disk space consumption, or creating large files quickly.
+
+> ⚠️ **WARNING**: This tool performs destructive operations on your disk. Use with extreme caution and only on drives you have permission to modify.
 
 ### Features
 
-* Feature — What it does and why it matters.
-* Feature — What it does and why it matters.
-* Feature — What it does and why it matters.
+* **Automatic Disk Filling** — Writes random data continuously until the target drive reaches a configurable usage percentage (default: 95%)
+* **Configurable Chunk Size** — Specify write chunk size in megabytes (default: 1 MB) for performance tuning
+* **Progress Monitoring** — Real-time progress updates showing file size and disk usage percentage
+* **Safety Limits** — Built-in safeguards prevent the drive from becoming completely full, avoiding system crashes
+* **Statistics Tracking** — Records detailed statistics including total bytes written, timestamps, and cumulative usage
+* **User Confirmation** — Requires explicit confirmation before starting destructive operations
+* **Async Operations** — Non-blocking I/O with cancellation token support for graceful interruption
 
 ## How it works
 
-A blurb describing how the project works at a high level.
+DiskDestroyer operates by:
+
+1. Identifying the current drive where the application is running
+2. Creating or appending to a file named `disk_destroyer.dat` on that drive
+3. Writing random bytes in configurable chunks (default 1 MB) using asynchronous I/O
+4. Periodically checking available disk space and calculating projected usage
+5. Stopping when the target percentage threshold is reached (default: 95%)
+
+The application uses a large buffer size (1 MB) for efficient sequential writes and includes safety checks to prevent the drive from becoming completely full, which could cause system instability.
 
 ## Getting started
 
-A quick overview of how to get started with the project.
-
 ### Before you begin
 
-Any assumptions, or other information a user should know before
+⚠️ **Critical Safety Warnings:**
+
+* This tool will **permanently destroy data** on the target drive
+* The operation is **IRREVERSIBLE** — no recovery possible after execution
+* May cause **system instability** if disk becomes too full
+* Only run on drives you have explicit permission to modify
+* **Backup important data** before running this tool
 
 ### Requirements
 
 | Requirement | Minimum version | Notes |
 |-------------|-----------------|-------|
-| Requirement |                 |       |
-| Requirement |                 |       |
-| Requirement |                 |       |
+| [.NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) | 10.0+ | Required to build and run |
+| Windows OS | Any modern version | Tested on Windows platforms |
+| Administrator privileges | Recommended | May be required for certain drives |
 
 ## Installing
 
-Quick summary of installation instructions, or link to the Installing documentation.
+### Prerequisites
+
+Ensure you have the [.NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) installed and available in your PATH.
+
+### Quick Start (Development)
+
+```bash
+# Clone or navigate to the repository
+cd D:\Repositories\APCP\DiskDestroyer
+
+# Restore dependencies
+dotnet restore
+
+# Build the project
+dotnet build --configuration Release
+```
 
 ## Usage
 
-Step-by-step instructions for using the project on supported platforms.
+### Basic Usage
+
+Run DiskDestroyer from a command prompt. The application will automatically use the current drive and default settings:
+
+```bash
+cd D:\Repositories\APCP\DiskDestroyer
+dotnet run --project src/DiskDestroyer.csproj
+```
+
+The program will display a warning message and require confirmation before proceeding.
+
+### Custom Chunk Size
+
+Specify a custom chunk size in megabytes (e.g., `-8` for 8 MB chunks):
+
+```bash
+dotnet run --project src/DiskDestroyer.csproj -8
+```
+
+Available options:
+* **No argument** — Uses default 1 MB chunk size
+* **Positive number** — Sets chunk size in MB (e.g., `-4`, `-8`, `-64`)
+* **Leading dash ignored** — You can use `--` prefix if needed
+
+### Command Line Arguments
+
+| Argument | Description | Default |
+|----------|-------------|---------|
+| `-N` or `--chunk-size=N` | Write chunk size in megabytes | 1 MB |
+
+### Example Sessions
+
+#### Filling C: Drive with Default Settings (1 MB chunks)
+
+```bash
+cd D:\Repositories\APCP\DiskDestroyer
+dotnet run --project src/DiskDestroyer.csproj
+```
+
+**Expected output:**
+```
+Using chunk size: 1024 MB (1073741824 bytes)
+
+WARNING: This will destroy data on drive C!
+
+This action is IRREVERSIBLE and may cause system instability.
+
+Are you absolutely sure you want to continue? (y/n)
+Enter your choice: y
+
+✓ Proceeding with write operation on C:\...
+Writing to C:\disk_destroyer.dat
+Progress: file=1,073,741 bytes, disk=XX.XX%
+...
+Reached target: 95.00% usage
+
+=== Write Complete ===
+Total bytes written: XXX,XXX,XXX (XX.XX GB)
+Final disk usage: XX.XX%
+Statistics recorded: X entries
+```
+
+#### Filling D: Drive with Larger Chunks (8 MB chunks)
+
+```bash
+dotnet run --project src/DiskDestroyer.csproj -8
+```
 
 ## Documentation
 
-Documentation is available.
+* [Manual](docs/man/README.md) — Comprehensive user manual
+* [API Reference](docs/api/README.md) — Complete API documentation
+* [Development Guide](docs/DEVELOPMENT.md) — For contributors and developers
+* [FAQ](docs/FAQ.md) — Frequently asked questions
+* [Support](docs/SUPPORT.md) — Getting help and support options
 
 ## Acknowledgements
 
@@ -82,9 +184,9 @@ None.
 
 ## Built with
 
-* [Technology or framework](URL)  - Role it plays in the project.
-* [Technology or framework](URL)  - Role it plays in the project.
-* [Technology or framework](URL)  - Role it plays in the project.
+* [.NET 10+](https://dotnet.microsoft.com/) - Modern C# runtime and libraries
+* [`System.IO`](https://learn.microsoft.com/en-us/dotnet/api/system.io) - File I/O operations
+* [`DriveInfo`](https://learn.microsoft.com/en-us/dotnet/api/system.io.drivedriveinfo) - Disk space information
 
 ## Related projects
 
@@ -92,8 +194,10 @@ None.
 
 ## License
 
-Copyright &copy; 2026 [A Pretty Cool Program](https://github.com/aprettycoolprogram)  
-Distributed under the [Apache 2.0 License](LICENSE)  
+Copyright © 2026 [A Pretty Cool Program](https://github.com/aprettycoolprogram)  
+Distributed under the [Apache 2.0 License](LICENSE)
+
+***
 
 <h6 align="center">
 

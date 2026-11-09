@@ -12,5 +12,21 @@ namespace DiskDestroyer;
 
 internal class ProjectInfo
 {
-    // This class is only used for informational purposes.
+    /* ABOUT DISK DESTROYER
+     * --------------------
+     *
+     * Disk Destroyer is a single class, which isn't best practice, but it is kind of fun!
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     */
 }

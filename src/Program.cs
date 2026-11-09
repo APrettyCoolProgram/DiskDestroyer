@@ -1,10 +1,20 @@
-﻿// 261107_code
-// 261107_documentation
+﻿// 261109_code
+// 261109_documentation
+
+
 
 namespace DiskDestroyer;
 
-class Program
+static class Program
 {
+    /// <summary>
+    /// Validates input, confirms execution, and writes data to the current drive until the target disk usage threshold
+    /// is reached.
+    /// </summary>
+    /// <remarks>Exits the process with a non-zero code when the current drive cannot be determined or when
+    /// arguments are invalid.</remarks>
+    /// <param name="args">Command-line arguments used to determine the write chunk size.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
     static async Task Main(string[] args)
     {
         string? currentDrive = Path.GetPathRoot(Environment.CurrentDirectory);
@@ -12,6 +22,7 @@ class Program
         if (currentDrive is null)
         {
             Console.WriteLine("Error: Could not determine current drive.");
+
             Environment.Exit(1);
         }
 
@@ -20,6 +31,7 @@ class Program
         if (!TryParseChunkSizeArgument(args, out long chunkSizeInBytes, out string? errorMessage))
         {
             Console.WriteLine(errorMessage);
+
             Environment.Exit(1);
         }
 
@@ -52,9 +64,14 @@ class Program
     }
 
     /// <summary>
-    /// Parses an optional chunk size argument where the value is expressed in MB.
-    /// Example: DiskDestroyer -8 => 8 MB chunks.
+    /// Parses an optional chunk size argument in megabytes and converts it to bytes.
     /// </summary>
+    /// <remarks>A leading '-' on the first argument is ignored before parsing.</remarks>
+    /// <param name="args">Command-line arguments where the first value may specify the chunk size in MB.</param>
+    /// <param name="chunkSizeInBytes">When parsing succeeds, contains the chunk size in bytes; defaults to 1 MB when no argument is provided.</param>
+    /// <param name="errorMessage">When parsing fails, contains a validation error message; otherwise <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> when the argument is missing or contains a valid positive integer chunk size; otherwise,
+    /// <see langword="false"/>.</returns>
     internal static bool TryParseChunkSizeArgument(string[] args, out long chunkSizeInBytes, out string? errorMessage)
     {
         const long oneMegabyte = 1024 * 1024;
