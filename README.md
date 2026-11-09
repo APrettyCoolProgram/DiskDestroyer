@@ -36,7 +36,7 @@
 ***
 
 > [!WARNING]  
-> **DiskDestroyer<sup>1</sup>** will **permanently overwrite empty space** on the target drive!
+> **DiskDestroyer<sup>1</sup>** will ***permanently* overwrite empty space** on the target drive!
 
 ## About Disk Destroyer
 
@@ -44,7 +44,7 @@
 
 ## How it works
 
-DiskDestroyer creates (or appends) random data to a file named `disk_destroyer.dat` on that drive
+ **DiskDestroyer<sup>1</sup>** creates (or appends) random data to a file named `disk_destroyer.dat` on that drive
 
 ## Getting started
 
