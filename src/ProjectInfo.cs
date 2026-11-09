@@ -15,18 +15,6 @@ internal class ProjectInfo
     /* ABOUT DISK DESTROYER
      * --------------------
      *
-     * Disk Destroyer is a single class, which isn't best practice, but it is kind of fun!
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
+     * Disk Destroyer1 is a utility that writes random data to a drive's free space.
      */
 }

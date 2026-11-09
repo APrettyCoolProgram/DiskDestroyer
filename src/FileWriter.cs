@@ -3,12 +3,18 @@
 
 namespace DiskDestroyer;
 
+/// <summary>Provides operations that write random data to a file on a specified drive.</summary>
+/// <remarks>
+/// Intended for controlled testing scenarios. The write operation can consume most available disk space,
+/// appends to a fixed file name on the target drive, and should be used with appropriate permissions and
+/// safeguards.
+/// </remarks>
 public static class FileWriter
 {
-    /// <summary>
-    /// Writes data to a file until the disk is nearly full.
+    /// <summary> Writes data to a file until the disk is nearly full. </summary>
+    /// <remarks>
     /// Includes safety limits to prevent system crashes.
-    /// </summary>
+    ///</remarks>
     /// <param name="driveLetter">Drive letter (e.g., 'C')</param>
     /// <param name="chunkSize">Size of each write chunk in bytes (default: 1MB)</param>
     /// <param name="maxFillPercentage">Maximum disk usage percentage before stopping (default: 95%)</param>
@@ -137,9 +143,7 @@ public static class FileWriter
         return result;
     }
 
-    /// <summary>
-    /// Get available and total disk space for the drive containing the file.
-    /// </summary>
+    /// <summary>Get available and total disk space for the drive containing the file.</summary>
     private static DiskSpaceInfo? GetDiskSpace(string filePath)
     {
         try
@@ -164,9 +168,7 @@ public static class FileWriter
         }
     }
 
-    /// <summary>
-    /// Result containing write statistics.
-    /// </summary>
+    /// <summary>Result containing write statistics.</summary>
     public class DiskWriteResult
     {
         public long TotalBytesWritten { get; set; }
@@ -175,9 +177,7 @@ public static class FileWriter
         public void AddStatistics(DiskWriteStatistics stat) => Statistics.Add(stat);
     }
 
-    /// <summary>
-    /// Individual write statistics entry.
-    /// </summary>
+    /// <summary>Individual write statistics entry.</summary>
     public class DiskWriteStatistics(DateTime timestamp, long bytesWritten, long cumulativeBytes, double diskUsagePercent)
     {
         public DateTime Timestamp { get; set; } = timestamp;
@@ -186,9 +186,7 @@ public static class FileWriter
         public double DiskUsagePercent { get; set; } = diskUsagePercent;
     }
 
-    /// <summary>
-    /// Simple disk space information.
-    /// </summary>
+    /// <summary>Simple disk space information.</summary>
     private class DiskSpaceInfo(long totalSize, long freeSpace, long usedSpace)
     {
         public long TotalSize { get; set; } = totalSize;

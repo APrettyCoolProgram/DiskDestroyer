@@ -1,30 +1,26 @@
 ﻿// 261109_code
 // 261109_documentation
 
-
-
 namespace DiskDestroyer;
 
+/// <summary>Entry class for DiskDestroyer.</summary>
+/// <remarks>
+/// Performs a destructive disk-fill operation and includes safety prompts, input validation, and basic
+/// exception handling for cancellation, I/O failures, and drive access errors.
+/// </remarks>
 static class Program
 {
-    /// <summary>
-    /// Validates input, confirms execution, and writes data to the current drive until the target disk usage threshold
-    /// is reached.
-    /// </summary>
-    /// <remarks>Exits the process with a non-zero code when the current drive cannot be determined or when
-    /// arguments are invalid.</remarks>
-    /// <param name="args">Command-line arguments used to determine the write chunk size.</param>
+    /// <summary>Entry method for DiskDestroyer.</summary>
+    /// <remarks>
+    /// This does the heavy lifting.
+    /// </remarks>
+    /// <param name="args">Command-line arguments.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    static async Task Main(string[] args)
+    internal static async Task Main(string[] args)
     {
         string? currentDrive = Path.GetPathRoot(Environment.CurrentDirectory);
 
-        if (currentDrive is null)
-        {
-            Console.WriteLine("Error: Could not determine current drive.");
-
-            Environment.Exit(1);
-        }
+        VerifyDriveExists(currentDrive);
 
         char driveLetter = currentDrive[0];
 
@@ -39,10 +35,7 @@ static class Program
 
         try
         {
-            var result = await FileWriter.WriteUntilDiskFullAsync(
-                driveLetter: driveLetter,
-                chunkSize: chunkSizeInBytes,
-                maxFillPercentage: 95.0);
+            var result = await FileWriter.WriteUntilDiskFullAsync(driveLetter: driveLetter, chunkSize: chunkSizeInBytes, maxFillPercentage: 95.0);
 
             Console.WriteLine($"{Environment.NewLine}=== Write Complete ==={Environment.NewLine}");
             Console.WriteLine($"Total bytes written: {result.TotalBytesWritten:N0} ({(double)result.TotalBytesWritten / (1024 * 1024 * 1024):F2} GB)");
@@ -63,10 +56,10 @@ static class Program
         }
     }
 
-    /// <summary>
-    /// Parses an optional chunk size argument in megabytes and converts it to bytes.
-    /// </summary>
-    /// <remarks>A leading '-' on the first argument is ignored before parsing.</remarks>
+    /// <summary>Parses an optional chunk size argument in megabytes and converts it to bytes.</summary>
+    /// <remarks>
+    /// A leading '-' on the first argument is ignored before parsing.
+    /// </remarks>
     /// <param name="args">Command-line arguments where the first value may specify the chunk size in MB.</param>
     /// <param name="chunkSizeInBytes">When parsing succeeds, contains the chunk size in bytes; defaults to 1 MB when no argument is provided.</param>
     /// <param name="errorMessage">When parsing fails, contains a validation error message; otherwise <see langword="null"/>.</param>
@@ -105,9 +98,7 @@ static class Program
         return true;
     }
 
-    /// <summary>
-    /// Confirms with user before proceeding with destructive operation.
-    /// </summary>
+    /// <summary>Confirms with user before proceeding with destructive operation.</summary>
     internal static async Task ConfirmAndProceedAsync(char driveLetter)
     {
         var msg = $"{Environment.NewLine}" +
@@ -142,5 +133,21 @@ static class Program
         }
 
         Console.WriteLine($"\n✓ Proceeding with write operation on {driveInfo.Name}...");
+    }
+
+    /// <summary>Validates that the current drive value is available before continuing execution.</summary>
+    /// <remarks>
+    /// Writes an error message to standard output and terminates the process with exit code 1 when
+    /// <paramref name="currentDrive"/> is <see langword="null"/>.
+    /// </remarks>
+    /// <param name="currentDrive">The drive value to validate.</param>
+    private static void VerifyDriveExists(string currentDrive)
+    {
+        if (currentDrive is null)
+        {
+            Console.WriteLine($"[ERROR] Drive {currentDrive} does not exist.");
+
+            Environment.Exit(1);
+        }
     }
 }

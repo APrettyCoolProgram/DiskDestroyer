@@ -19,7 +19,7 @@
 
 This is the initial release of Disk Destroyer.
 
-[Download 1.0]()  
+[Download version 1.0](https://github.com/APrettyCoolProgram/DiskDestroyer/releases/tag/v1.0)  
 
 ## Source code
 

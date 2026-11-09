@@ -8,9 +8,11 @@
 
 </div>
 
-Nothing to see here.
+* Allow the user to override the 95%-full safety
+* Update progress messages
+* Lots more safety measures (no OS drives, etc.)
+* Other refactors
 
 ***
-
 
 ❰ [Back to repository main page](../README.md)
