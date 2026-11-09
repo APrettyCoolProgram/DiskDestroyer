@@ -1,4 +1,4 @@
-❰ [Repository-Template](../../README.md) ❬ [Release notes](./README.md) ❬ Version 1.0
+❰ [DiskDestroyer](../../README.md) ❬ [Release notes](./README.md) ❬ Version 1.0
 
 <div align="center">
 
@@ -61,4 +61,4 @@ None.
 
 ***
 
-❰ [Repository-Template](../../README.md) ❬ [Release notes](./README.md) ❬ Version 1.0
+❰ [Disk Destroyer](../../README.md) ❬ [Release notes](./README.md) ❬ Version 1.0
