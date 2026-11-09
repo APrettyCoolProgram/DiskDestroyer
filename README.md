@@ -16,7 +16,7 @@
 
 <h6 align="center">
 
-  [MANUAL](docs/man/README.md)&nbsp;&bull;&nbsp;[CHANGELOG](docs/CHANGELOG.md)&nbsp;&bull;&nbsp;[ROADMAP](docs/ROADMAP.md)&nbsp;&bull;&nbsp;[KNOWN ISSUES](docs/KNOWN-ISSUES.md)
+  [CHANGELOG](docs/CHANGELOG.md)&nbsp;&bull;&nbsp;[ROADMAP](docs/ROADMAP.md)&nbsp;&bull;&nbsp;[KNOWN ISSUES](docs/KNOWN-ISSUES.md)
 
 </h6>
 
@@ -108,29 +108,6 @@ To specify a custom chunk size in megabytes, simply add that to the `DiskDestroy
 | `DiskDestroyer -8`  | 8MB         |
 | `DiskDestroyer -16` | 16MB        |
 
-
-## Documentation
-
-* [Manual](docs/man/README.md) — Comprehensive user manual
-* [API Reference](docs/api/README.md) — Complete API documentation
-* [Development Guide](docs/DEVELOPMENT.md) — For contributors and developers
-* [FAQ](docs/FAQ.md) — Frequently asked questions
-* [Support](docs/SUPPORT.md) — Getting help and support options
-
-## Acknowledgements
-
-None.
-
-## Built with
-
-* [.NET 10+](https://dotnet.microsoft.com/) - Modern C# runtime and libraries
-* [`System.IO`](https://learn.microsoft.com/en-us/dotnet/api/system.io) - File I/O operations
-* [`DriveInfo`](https://learn.microsoft.com/en-us/dotnet/api/system.io.drivedriveinfo) - Disk space information
-
-## Related projects
-
-None.
-
 ## License
 
 Copyright © 2026 [A Pretty Cool Program](https://github.com/aprettycoolprogram)  
@@ -140,7 +117,7 @@ Distributed under the [Apache 2.0 License](LICENSE)
 
 <h6 align="center">
 
-  [FAQ](docs/FAQ.md)&nbsp;&bull;&nbsp;[DEVELOPMENT](docs/DEVELOPMENT.md)&nbsp;&bull;&nbsp;[API](docs/api/README.md)&nbsp;&bull;&nbsp;[SUPPORT](docs/SUPPORT.md)&nbsp;&bull;&nbsp;[NOTICES](docs/NOTICES.md)
+  [FAQ](docs/FAQ.md)&nbsp;&bull;&nbsp;[DEVELOPMENT](docs/DEVELOPMENT.md)[SUPPORT](docs/SUPPORT.md)&nbsp;&bull;&nbsp;[NOTICES](docs/NOTICES.md)
 
 </h6>
 
