@@ -35,6 +35,13 @@
 
 ***
 
+> [!WARNING]  
+> * This tool will **permanently destroy data** on the target drive
+> * The operation is **IRREVERSIBLE** — no recovery possible after execution
+> * May cause **system instability** if disk becomes too full
+> * Only run on drives you have explicit permission to modify
+> * **Backup important data** before running this tool
+
 ## About Disk Destroyer
 
 **DiskDestroyer<sup>1</sup>** is a utility designed to fill up a disk drive data, overwriting any empty space.
@@ -47,12 +54,7 @@ DiskDestroyer creates (or appends) random data to a file named `disk_destroyer.d
 
 ### Before you begin
 
-> [!WARNING]  
-> * This tool will **permanently destroy data** on the target drive
-> * The operation is **IRREVERSIBLE** — no recovery possible after execution
-> * May cause **system instability** if disk becomes too full
-> * Only run on drives you have explicit permission to modify
-> * **Backup important data** before running this tool
+
 
 
 
