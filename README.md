@@ -36,9 +36,7 @@
 ***
 
 > [!WARNING]  
-> This tool will **permanently overwrite empty space** on the target drive!
->
-> The operation is **IRREVERSIBLE** — no recovery possible after execution!
+> **DiskDestroyer<sup>1</sup>** will **permanently overwrite empty space** on the target drive!
 
 ## About Disk Destroyer
 
