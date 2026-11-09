@@ -2,15 +2,17 @@
 
 <div align="center">
 
-  <img src="../.github/logo/DiskDestroyer-256x256.png" alt="DiskDestroyer">
-  
+  <img src="../.github/logo/DiskDestroyer-128x128.png" alt="DiskDestroyer">
+
   <h1>Changelog</h1>
 
 </div>
 
-## RYY.MM (YYYY-MM-DD)
+## Version 1.0 (2026-11-09)
 
-> Please see the [release notes](rn/rn0.0.md) for more details.
+> Please see the [release notes](rn/rn1.0.md) for more details.
+
+* Initial release of Disk Destroyer.
 
 ***
 
