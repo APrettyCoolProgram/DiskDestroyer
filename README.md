@@ -91,6 +91,8 @@ To run **Disk Destroyer**<sup>1</sup>:
 
 The program will display a warning message and require confirmation before proceeding.
 
+**Disk Destroyer**<sup>1</sup> progress will be shown in the console.
+
 > [!NOTE]
 > Depending on the size and type of disk (e.g., HDD, SSD), **Disk Destroyer**<sup>1</sup> may take a long time to complete.
 
@@ -101,66 +103,11 @@ The default chunk size is 1MB.
 To specify a custom chunk size in megabytes, simply add that to the `DiskDestroyer` command, like this:
 
 | Command             | Chunk-size  |
-|---------------------|-------------|
+|---------------------|:-----------:|
 | `DiskDestroyer`     | 1MB         |
 | `DiskDestroyer -8`  | 8MB         |
 | `DiskDestroyer -16` | 16MB        |
 
-
- (e.g., `-8` for 8 MB chunks):
-
-```bash
-dotnet run --project src/DiskDestroyer.csproj -8
-```
-
-Available options:
-* **No argument** — Uses default 1 MB chunk size
-* **Positive number** — Sets chunk size in MB (e.g., `-4`, `-8`, `-64`)
-* **Leading dash ignored** — You can use `--` prefix if needed
-
-### Command Line Arguments
-
-| Argument | Description | Default |
-|----------|-------------|---------|
-| `-N` or `--chunk-size=N` | Write chunk size in megabytes | 1 MB |
-
-### Example Sessions
-
-#### Filling C: Drive with Default Settings (1 MB chunks)
-
-```bash
-cd D:\Repositories\APCP\DiskDestroyer
-dotnet run --project src/DiskDestroyer.csproj
-```
-
-**Expected output:**
-```
-Using chunk size: 1024 MB (1073741824 bytes)
-
-WARNING: This will destroy data on drive C!
-
-This action is IRREVERSIBLE and may cause system instability.
-
-Are you absolutely sure you want to continue? (y/n)
-Enter your choice: y
-
-✓ Proceeding with write operation on C:\...
-Writing to C:\disk_destroyer.dat
-Progress: file=1,073,741 bytes, disk=XX.XX%
-...
-Reached target: 95.00% usage
-
-=== Write Complete ===
-Total bytes written: XXX,XXX,XXX (XX.XX GB)
-Final disk usage: XX.XX%
-Statistics recorded: X entries
-```
-
-#### Filling D: Drive with Larger Chunks (8 MB chunks)
-
-```bash
-dotnet run --project src/DiskDestroyer.csproj -8
-```
 
 ## Documentation
 
