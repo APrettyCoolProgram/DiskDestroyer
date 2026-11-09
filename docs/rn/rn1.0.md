@@ -15,15 +15,11 @@
 | [Repository](#repository)                 |
 | [Miscellaneous](#miscellaneous)           |
 
-***
-
 ## About this release
 
 This is the initial release of Disk Destroyer.
 
 [Download 1.0]()  
-
-***
 
 ## Source code
 
@@ -45,13 +41,11 @@ None.
 
 ## Known issues
 
-***
+None.
 
 ## Repository
 
 None.
-
-***
 
 ## Miscellaneous
 

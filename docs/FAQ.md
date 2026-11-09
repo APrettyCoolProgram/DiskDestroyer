@@ -8,8 +8,6 @@
 
 </div>
 
-***
-
 ## Why isn't this utility named "DriveDestroyer" or "FreeSpaceDestroyer"?
 
 It should have been.
@@ -21,5 +19,7 @@ Yes.
 ## Will this damage SSDs?
 
 It writes a lot of data, so it might actually destroy SSDs, but I don't know for sure.
+
+***
 
 ❰ [Back to repository main page](../README.md)
