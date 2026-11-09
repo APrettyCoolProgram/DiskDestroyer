@@ -37,31 +37,11 @@
 
 ## About Disk Destroyer
 
-**DiskDestroyer<sup>1</sup>** is a utility designed to fill up a disk drive with random data.
-
-> ⚠️ **WARNING**: This tool performs destructive operations on your disk. Use with extreme caution and only on drives you have permission to modify.
-
-### Features
-
-* **Automatic Disk Filling** — Writes random data continuously until the target drive reaches a configurable usage percentage (default: 95%)
-* **Configurable Chunk Size** — Specify write chunk size in megabytes (default: 1 MB) for performance tuning
-* **Progress Monitoring** — Real-time progress updates showing file size and disk usage percentage
-* **Safety Limits** — Built-in safeguards prevent the drive from becoming completely full, avoiding system crashes
-* **Statistics Tracking** — Records detailed statistics including total bytes written, timestamps, and cumulative usage
-* **User Confirmation** — Requires explicit confirmation before starting destructive operations
-* **Async Operations** — Non-blocking I/O with cancellation token support for graceful interruption
+**DiskDestroyer<sup>1</sup>** is a utility designed to fill up a disk drive data, overwriting any empty space.
 
 ## How it works
 
-DiskDestroyer operates by:
-
-1. Identifying the current drive where the application is running
-2. Creating or appending to a file named `disk_destroyer.dat` on that drive
-3. Writing random bytes in configurable chunks (default 1 MB) using asynchronous I/O
-4. Periodically checking available disk space and calculating projected usage
-5. Stopping when the target percentage threshold is reached (default: 95%)
-
-The application uses a large buffer size (1 MB) for efficient sequential writes and includes safety checks to prevent the drive from becoming completely full, which could cause system instability.
+DiskDestroyer creates (or appends) random bytes to a file named `disk_destroyer.dat` on that drive
 
 ## Getting started
 
