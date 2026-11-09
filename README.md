@@ -36,11 +36,9 @@
 ***
 
 > [!WARNING]  
-> * This tool will **permanently destroy data** on the target drive
-> * The operation is **IRREVERSIBLE** — no recovery possible after execution
-> * May cause **system instability** if disk becomes too full
-> * Only run on drives you have explicit permission to modify
-> * **Backup important data** before running this tool
+> This tool will **permanently overwrite empty space** on the target drive!
+>
+> The operation is **IRREVERSIBLE** — no recovery possible after execution!
 
 ## About Disk Destroyer
 
