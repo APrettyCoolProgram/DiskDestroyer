@@ -56,8 +56,6 @@ To ensure the file is permanently deleted, you need to write random patterns of 
 
 ### Requirements
 
-### Before you begin
-
 * [.NET 10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 
 **Disk Destroyer**<sup>1</sup> has only been tested on Windows.
@@ -81,16 +79,14 @@ Here's how you do it:
 2. Navigate to the root of the drive you want to destroy<sup>1</sup>
 3. Type `DiskDestroyer`
 
-
-
-```bash
-cd D:\Repositories\APCP\DiskDestroyer
-dotnet run --project src/DiskDestroyer.csproj
-```
-
 The program will display a warning message and require confirmation before proceeding.
 
+> [!NOTE]
+> Depending on the size and type of disk (e.g., HDD, SSD), **Disk Destroyer**<sup>1</sup> may take a long time to complete.
+
 ### Custom Chunk Size
+
+The default chunk size is 1MB
 
 Specify a custom chunk size in megabytes (e.g., `-8` for 8 MB chunks):
 
