@@ -1,244 +1,124 @@
 <div align="center">
 
-  <img src=".github/logo/RepositoryTemplate-672x440.png" alt="Repository Template">
+  <img src=".github/logo/DiskDestroyer-256x256.png" alt="DiskDestroyer">
 
   <br/>
+  <br/>
 
-  ![RELEASE](https://img.shields.io/badge/release-September_2026-teal)&nbsp;&nbsp;
-  ![LICENSE](https://img.shields.io/badge/license-Apache%202.0-blue)
-
-# Repository-Template
+  ![RELEASE](https://img.shields.io/badge/Version-1.0-teal)&nbsp;
+  ![LICENSE](https://img.shields.io/badge/License-apache-blue)&nbsp;
+  ![Platform](https://img.shields.io/badge/Platform-windows-lightgrey)&nbsp;
+  ![.NET](https://img.shields.io/badge/.NET-10.0+-blueviolet)&nbsp;
 
 </div>
 
-| CONTENTS                                                        |
-|:----------------------------------------------------------------|
-| [About this repository](#about-this-repository)                 |
-| [What this repository includes](#what-this-repository-includes) |
-| [Using the template](#using-the-template)                       |
-| [Folder structure](#folder-structure)                           |
-| [Supporting documentation](#supporting-documentation)           |
+***
+
+<h6 align="center">
+
+  [CHANGELOG](docs/CHANGELOG.md)&nbsp;&bull;&nbsp;[ROADMAP](docs/ROADMAP.md)&nbsp;&bull;&nbsp;[KNOWN ISSUES](docs/KNOWN-ISSUES.md)
+
+</h6>
 
 ***
 
-# About this repository
+| CONTENTS                                      |
+|-----------------------------------------------|
+| [About Disk Destroyer](#about-disk-destroyer) |
+| [How it works](#how-it-works)                 |
+| [Getting started](#getting-started)           |
+| [Installing](#installing)                     |
+| [Usage](#usage)                               |
+| [Acknowledgements](#acknowledgements)         |
+| [Related projects](#related-projects)         |
+| [License](#license)                           |
 
-This is a GitHub repository template, which provides a consistent starting structure for new repositories.
+***
 
-## What this repository includes
+> [!WARNING]  
+> **Disk Destroyer**<sup>1</sup> will *permanently* delete any data it overwrites!
 
-* A [.github/](.github) folder for repository resources.
-* A [docs/](docs) folder for repository documentation.
-* A [project/](project) folder for [*project repositories*](#project-repositories).
-* A [src/](src) folder for [*source code repositories*](#source-code-repositories).
-* A `.gitignore` file.
-* An `AGENTS.md` file.
-* A `LICENSE` file.
-* The repository's main `README.md`, which will be replaced by:
-  * The [Collection-README.md](Collection-README.md) for collection-style repositories.
-  * The [Project-README.md](Project-README.md) for project-style repositories.
-  * The [SourceCode-README.md](SourceCode-README.md) for software or source-code repositories.
+## About Disk Destroyer
 
-# Using the template
+**Disk Destroyer**<sup>1</sup> is a utility that writes random data to a drive's free space.
 
-## Collection repositories
+## How it works
 
-A ***collection repository*** is a repository that primarily collects links, notes, or documentation and **does not contain** source code.
+**Disk Destroyer**<sup>1</sup> creates (or appends) random data to a file named `disk_destroyer.dat` until the drive is full.
 
-[The Documentation Project](https://github.com/APrettyCoolProgram/TheDocumentationProject) is an example of a collection repository.
+### I'll do you one better: Why it works?
 
-To create a collection repository:
+When you "delete" a file, only the *reference* to that file is erased, not the *file* itself.
 
-1. Create a new repository using this template.
-2. Remove the following files/folders:
-  * `src/`
-  * `projects/`
-  * `README.md` (this file!)
-  * `SourceCode-README.md`
-  * `Projects-README.md`
-3. Rename `Collection-README.md` to `README.md`.
-4. Modify `README.md` to reflect the content and purpose of the repository.
-5. Review the files in [docs/](docs) and remove any folders/documents the new repository does not need.
-6. Replace %RepositoryName% with the name of the new repository in all relevant files.
-7. Add the `.do-not-commit/` folder to `.github/` (optional, but helpful)
+The file still exists and is marked as *free space*, and will remain as such until it's location is overwritten with new data. And until it's overwritten, data recovery software can recover the file.
 
-## Project repositories
+To ensure the file is permanently deleted, you need to write random patterns of data over the file's location.
 
-A ***project repository*** is a repository that contains multiple *projects*, which may include source code, documentation, and other assets.
+### Requirements
 
-The difference between a **project repository** and a **source code repository** is that a **project repository** contains projects that are loosely related - or not related at all - whereas a **source code repository** primarily focuses on a single codebase.
+* [.NET 10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 
-The [Experiments](https://github.com/APrettyCoolProgram/Experiments) repository is an example of a project repository.
+**Disk Destroyer**<sup>1</sup> has only been tested on Windows.
 
-To create a project repository:
+## Installing
 
-1. Create a new repository using this template.
-2. Remove the following files/folders:
-  * `src/`
-  * `README.md` (this file!)
-  * `Collection-README.md`
-  * `SourceCode-README.md`
-3. Rename `Projects-README.md` to `README.md`.
-4. Modify `README.md` to reflect the content and purpose of the repository.
-5. Review the files in [docs/](docs) and remove any folders/documents the new repository does not need.
-6. Replace %RepositoryName% with the name of the new repository in all relevant files.
-7. Add the `.do-not-commit/` folder to `.github/` (optional, but helpful)
+**Disk Destroyer**<sup>1</sup> is a portable application, and doesn't need to be installed.
 
-Each project within the repository should have its own dedicated folder under [projects/](projects).
+All you need to do is:
 
-## Source code repositories
+1. Download the latest [release](https://github.com/APrettyCoolProgram/DiskDestroyer/releases)
+2. Extract the downloaded file to the root of the drive you want to destroy<sup>1</sup>
 
-A ***source code repository*** is a repository that primarily contains buildable software or other source code.
+## Usage
 
-To create a source code repository:
+**Disk Destroyer**<sup>1</sup> is run from a command prompt.
 
-1. Create a new repository using this template.
-2. Remove the following files/folders:
-  * `projects/`
-  * `README.md` (this file!)
-  * `Collection-README.md`
-  * `Projects-README.md`
-3. Rename `SourceCode-README.md` to `README.md`.
-4. Modify `README.md` to reflect the content and purpose of the repository.
-5. Review the files in [docs/](docs) and remove any folders/documents the new repository does not need.
-6. Replace %RepositoryName% with the name of the new repository in all relevant files.
-7. Add the `.do-not-commit/` folder to `.github/` (optional, but helpful)
+### Syntax
 
-# Folder structure
+**Disk Destroyer**<sup>1</sup> has the following syntax:
 
-Each of these folders contains a `README.md` file that provides information about the contents and purpose of the folder.
+`DiskDestroyer [--chunk-size]`
 
-## The `./` (root) folder
+### Default execution
 
-All repositories have the following root folder structure:
+If you don't specifiy a chunk-size, the default is 1MB.
 
-```text
-.
-|-- .github/      Repository resources
-|-- docs/         Repository documentation
-|-- .gitignore    The repository .gitignore
-|-- LICENSE       The repository license
-|-- README.md     The repository README
-```
+To run **Disk Destroyer**<sup>1</sup>:
 
-*Project collections* also include a `projects/` folder to organize individual projects.
+1. Open a command prompt
+2. Navigate to the root of the drive you want to destroy<sup>1</sup>
+3. Type `DiskDestroyer`
 
-```text
-.
-|-- projects/       Projects
-|   |-- ProjectA/   Project A
-|   |-- ProjectB/   Project B
-```
+The program will display a warning message and require confirmation before proceeding.
 
-*Source code repositories* also include a `src/` folder to organize the source code.
+**Disk Destroyer**<sup>1</sup> progress will be shown in the console.
 
-```text
-.
-|-- src/          Source code
-```
+> [!NOTE]
+> Depending on the size and type of disk (e.g., HDD, SSD), **Disk Destroyer**<sup>1</sup> may take a long time to complete.
 
-## The `./.github/` folder
+### Custom Chunk Size
 
-All repositories include a `./.github/` folder for repository-specific resources.
+The default chunk size is 1MB.
 
-```text
-.
-|-- .github/
-|   |-- .do-not-commit/   Data/resources that should not be committed
-|   |-- agents/           AGENT files
-|   |-- archive/          Archived data
-|   |-- development/      Development resources
-|   |-- logo/             Logos
-|   |-- readme/           Repository README.md resources
-|   |-- third-party/      Third-party resources
-|   |-- workspace/        Workspace resources
-```
+To specify a custom chunk size in megabytes, simply add that to the `DiskDestroyer` command, like this:
 
-### The `./.github/development/` folder
+| Command             | Chunk-size  |
+|---------------------|:-----------:|
+| `DiskDestroyer`     | 1MB         |
+| `DiskDestroyer -8`  | 8MB         |
+| `DiskDestroyer -16` | 16MB        |
 
-The `./.github/development/` folder contains resources related to the development process, including old source files, scratch files, templates, working files, and various development documents.
+## License
 
-```text
-.
-|-- .github/
-|   |-- development/
-|   |   |-- old-src/                      Old source files
-|   |   |-- scratch/                      Scratch files
-|   |   |-- template/                     Template files
-|   |   |-- working/                      Working files 
-|   |   |-- DesignDocument.md             Design document
-|   |   |-- Development-KnownIssues.md    Known issues in development
-|   |   |-- Development-Notes.md          Development notes
-|   |   |-- Development-Roadmap.md        Development roadmap
-|   |   |-- ScratchPad.md                 Scratch pad for development notes
-```
+Copyright © 2026 [A Pretty Cool Program](https://github.com/aprettycoolprogram)  
+Distributed under the [Apache 2.0 License](LICENSE)
 
-## The `./docs/` folder
+***
 
-All repositories include a `./docs/` folder for documentation and supporting materials.
+<h6 align="center">
 
-```text
-.
-|-- docs/
-|   |-- api/                  API documentation
-|   |-- man/                  Manual
-|   |-- release-notes/        Release notes (detailed version history)
-|   |-- development/          Development documentation
-|   |-- CHANGELOG.md          Changelog (basic version history)
-|   |-- CODEOWNERS            Code ownership assignments
-|   |-- CONTRIBUTORS.md       Repository contributors
-|   |-- FAQ.md                Frequently asked questions
-|   |-- KNOWN-ISSUES.md       Known issues and workarounds
-|   |-- ROADMAP.md            Planned work and future direction
-|   |-- SECURITY.md           Security policy and vulnerability reporting guidance
-|   |-- SUPPORT.md            How to get help
-|   |-- TROUBLESHOOTING.md    Common problems and resolution steps
-```
+  [FAQ](docs/FAQ.md)&nbsp;&bull;&nbsp;[DEVELOPMENT](docs/DEVELOPMENT.md)&nbsp;&bull;&nbsp;[SUPPORT](docs/SUPPORT.md)&nbsp;&bull;&nbsp;[NOTICES](docs/NOTICES.md)
 
-### The `./docs/api/` folder
+</h6>
 
-The `./docs/api/` folder contains API documentation for the repository.
-
-```text
-|-- docs/
-|   |-- api/
-```
-
-### The `./docs/man/` folder
-
-The `./docs/man/` folder contains the manual for the repository.
-
-```text
-|-- docs/
-|   |-- man/
-```
-
-### The `./docs/release-notes/` folder
-
-The `./docs/release-notes/` folder contains detailed version history for the repository.
-
-```text
-|-- docs/
-|   |-- release-notes/
-```
-
-### The `./docs/development/` folder
-
-The `./docs/development/` folder contains development documentation for the repository.
-
-```text
-|-- docs/
-|   |-- development/
-```
-
-
-
-
-
-
-
-
-
-
-
-
+<sup>**1**</sup> Disk Destroy *probably* won't *actually* destroy disks.

@@ -2,11 +2,16 @@
 
 <div align="center">
 
-  <img src="../.github/logo/RepositoryTemplate-336x220.png" alt="Repository Template">
+  <img src="../.github/logo/DiskDestroyer-256x256.png" alt="DiskDestroyer">
 
   <h1>Roadmap</h1>
 
 </div>
+
+* Allow the user to override the 95%-full safety
+* Update progress messages
+* Lots more safety measures (no OS drives, etc.)
+* Other refactors
 
 ***
 

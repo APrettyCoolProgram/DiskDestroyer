@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <img src="../.github/logo/RepositoryTemplate-336x220.png" alt="Repository-Template">
+  <img src="../.github/logo/DiskDestroyer-256x256.png" alt="DiskDestroyer">
 
   <h1>Contributors</h1>
 
@@ -25,3 +25,7 @@ To contribute, please follow these steps:
 4. **Make your changes** — keep commits focused and write clear commit messages.
 5. **Run the test suite** and ensure all tests pass before submitting.
 6. **Open a pull request** against `main` and fill in the pull request template.
+
+***
+
+❰ [Back to repository main page](../README.md)
