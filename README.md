@@ -35,7 +35,8 @@
 
 ## About Disk Destroyer
 
-**DiskDestroyer** is a single-purpose C# console application designed to fill up a disk drive by writing random data until the specified usage threshold is reached. It's useful for stress testing storage systems, demonstrating disk space consumption, or creating large files quickly.
+**DiskDestroyer<sup>1</sup>** is a utility designed to fill up a disk drive with random data.
+
 
 > ⚠️ **WARNING**: This tool performs destructive operations on your disk. Use with extreme caution and only on drives you have permission to modify.
 
@@ -204,3 +205,5 @@ Distributed under the [Apache 2.0 License](LICENSE)
   [FAQ](docs/FAQ.md)&nbsp;&bull;&nbsp;[DEVELOPMENT](docs/DEVELOPMENT.md)&nbsp;&bull;&nbsp;[API](docs/api/README.md)&nbsp;&bull;&nbsp;[SUPPORT](docs/SUPPORT.md)&nbsp;&bull;&nbsp;[NOTICES](docs/NOTICES.md)
 
 </h6>
+
+<sup>**1**</sup> Disk Destroy *probably* won't *actually* destroy disks.
