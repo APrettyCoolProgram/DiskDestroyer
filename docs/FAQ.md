@@ -10,4 +10,12 @@
 
 ***
 
+## Why isn't this utility named "DriveDestroyer" or "FreeSpaceDestroyer"?
+
+It should have been.
+
+## Isn't this overkill? Formatting with zeros is destructive enough.
+
+Yes.
+
 ❰ [Back to repository main page](../README.md)

@@ -36,15 +36,27 @@
 ***
 
 > [!WARNING]  
-> **DiskDestroyer**<sup>1</sup> will ***permanently* overwrite empty space** on the target drive!
+> **DiskDestroyer**<sup>1</sup> will *permanently* delete any data it overwrites!
 
 ## About Disk Destroyer
 
-**DiskDestroyer**<sup>1</sup> is a utility designed to fill up a disk drive data, overwriting any empty space.
+**DiskDestroyer**<sup>1</sup> is a utility that writes random data to a drive's free space.
 
 ## How it works
 
-**DiskDestroyer**<sup>1</sup> creates (or appends) random data to a file named `disk_destroyer.dat` on that drive
+**DiskDestroyer**<sup>1</sup> creates (or appends) random data to a file named `disk_destroyer.dat` until the drive is full.
+
+### I'll do you one better: Why it works?
+
+When you "delete" a file, only the *reference* to that file is erased, not the *file* itself.
+
+The file still exists and is marked as *free space*, and will remain as such until it's location is overwritten with new data. And until it's overwritten, data recovery software can recover the file.
+
+To ensure the file is permanently deleted, 
+
+• Overwrite / Data Sanitization: Use dedicated wiping tools (such as Eraser or DBAN) that write random patterns of data over every sector of the drive.
+• Physical Destruction: For absolute security, physically destroying the drive (such as punching holes through the metal platters or shredding the device) makes data recovery impossible.
+
 
 ## Getting started
 
