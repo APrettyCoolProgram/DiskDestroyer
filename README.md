@@ -5,12 +5,14 @@
   <br/>
   <br/>
 
-  ![RELEASE](https://img.shields.io/badge/version-1.0-teal)&nbsp;
-  ![LICENSE](https://img.shields.io/badge/license-apache-blue)&nbsp;
-  ![Platform](https://img.shields.io/badge/platform-windows-lightgrey)&nbsp;
+  ![RELEASE](https://img.shields.io/badge/Version-1.0-teal)&nbsp;
+  ![LICENSE](https://img.shields.io/badge/License-apache-blue)&nbsp;
+  ![Platform](https://img.shields.io/badge/Platform-windows-lightgrey)&nbsp;
   ![.NET](https://img.shields.io/badge/.NET-10.0+-blueviolet)&nbsp;
 
 </div>
+
+***
 
 <h6 align="center">
 
@@ -36,7 +38,6 @@
 ## About Disk Destroyer
 
 **DiskDestroyer<sup>1</sup>** is a utility designed to fill up a disk drive with random data.
-
 
 > ⚠️ **WARNING**: This tool performs destructive operations on your disk. Use with extreme caution and only on drives you have permission to modify.
 
