@@ -36,15 +36,15 @@
 ***
 
 > [!WARNING]  
-> **DiskDestroyer<sup>1</sup>** will ***permanently* overwrite empty space** on the target drive!
+> **DiskDestroyer**<sup>1</sup> will ***permanently* overwrite empty space** on the target drive!
 
 ## About Disk Destroyer
 
-**DiskDestroyer<sup>1</sup>** is a utility designed to fill up a disk drive data, overwriting any empty space.
+**DiskDestroyer**<sup>1</sup> is a utility designed to fill up a disk drive data, overwriting any empty space.
 
 ## How it works
 
- **DiskDestroyer<sup>1</sup>** creates (or appends) random data to a file named `disk_destroyer.dat` on that drive
+**DiskDestroyer**<sup>1</sup> creates (or appends) random data to a file named `disk_destroyer.dat` on that drive
 
 ## Getting started
 
