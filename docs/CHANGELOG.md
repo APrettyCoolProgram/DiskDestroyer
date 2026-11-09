@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <img src="../.github/logo/DiskDestroyer-128x128.png" alt="DiskDestroyer">
+  <img src="../.github/logo/DiskDestroyer-256x256.png" alt="DiskDestroyer">
 
   <h1>Changelog</h1>
 
