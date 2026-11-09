@@ -73,6 +73,14 @@ All you need to do is:
 
 **Disk Destroyer**<sup>1</sup> is run from a command prompt.
 
+### Syntax
+
+**Disk Destroyer**<sup>1</sup> has the following syntax:
+
+`DiskDestroyer [<--chunk-size>] [<--percentage-fill>]`
+
+### Default execution
+
 Here's how you do it:
 
 1. Open a command prompt
