@@ -1,73 +1,64 @@
-❰ [Repository-Template](../../README.md) ❬ [Release notes](./README.md) ❬ Release XX.YY
+❰ [Repository-Template](../../README.md) ❬ [Release notes](./README.md) ❬ Version 1.0
 
 <div align="center">
 
-  <img src="../../.github/logo/RepositoryTemplate-336x220.png" alt="Repository-Template">
+  <img src="../../.github/logo/DiskDestroyer-256x256.png" alt="DiskDestroyer">
 
-  <h1>Release/Version XX.YY Release notes</h1>
+  <h1>Version 1.0 Release Notes</h1>
 
 </div>
 
 | CONTENTS                                  |
 |:------------------------------------------|
 | [About this release](#about-this-release) |
-| [Known issues](#known-issues)             |
-| [Repository](#repository)                        |
+| [Source code](#source-code)               |
+| [Repository](#repository)                 |
 | [Miscellaneous](#miscellaneous)           |
 
 ***
 
 # About this release
 
-Summarize the release here.
+This is the initial release of Disk Destroyer.
 
-[Download XX.YY]()  
-[XX.YY Manual]()
-
-***
-
-## Added
-
-Describe new features and capabilities.
+[Download 1.0]()  
 
 ***
 
-## Changed
+## Source code
 
-Describe changes to existing features or behavior.
+### Added
 
-***
+None.
 
-## Fixed
+### Changed
 
-Describe bugs and issues resolved in this release.
+None.
 
-***
+### Fixed
 
-## Removed
+None.
 
-Describe removed or deprecated features, if applicable.
+### Removed
 
-***
+None.
 
-# Known issues
-
-List known issues affecting this release, or write `None.` when there are none.
+## Known issues
 
 ***
 
-# Repository
+## Repository
 
-Changes to the repository (non-source code).
+None.
 
 ***
 
-# Miscellaneous
+## Miscellaneous
 
-Add migration notes, compatibility information, acknowledgements, or other relevant details.
+None.
 
 <br/>
 
 ***
 
-❰ [Repository-Template](../../README.md) ❬ [Release notes](./README.md) ❬ Release XX.YY
+❰ [Repository-Template](../../README.md) ❬ [Release notes](./README.md) ❬ Version 1.0
