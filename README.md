@@ -77,11 +77,13 @@ All you need to do is:
 
 **Disk Destroyer**<sup>1</sup> has the following syntax:
 
-`DiskDestroyer [<--chunk-size>] [<--percentage-fill>]`
+`DiskDestroyer [--chunk-size]`
 
 ### Default execution
 
-Here's how you do it:
+If you don't specifiy a chunk-size, the default is 1MB.
+
+To run **Disk Destroyer**<sup>1</sup>:
 
 1. Open a command prompt
 2. Navigate to the root of the drive you want to destroy<sup>1</sup>
@@ -94,9 +96,18 @@ The program will display a warning message and require confirmation before proce
 
 ### Custom Chunk Size
 
-The default chunk size is 1MB
+The default chunk size is 1MB.
 
-Specify a custom chunk size in megabytes (e.g., `-8` for 8 MB chunks):
+To specify a custom chunk size in megabytes, simply add that to the `DiskDestroyer` command, like this:
+
+| Command             | Chunk-size  |
+|---------------------|-------------|
+| `DiskDestroyer`     | 1MB         |
+| `DiskDestroyer -8`  | 8MB         |
+| `DiskDestroyer -16` | 16MB        |
+
+
+ (e.g., `-8` for 8 MB chunks):
 
 ```bash
 dotnet run --project src/DiskDestroyer.csproj -8
