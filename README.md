@@ -36,15 +36,15 @@
 ***
 
 > [!WARNING]  
-> **DiskDestroyer**<sup>1</sup> will *permanently* delete any data it overwrites!
+> **Disk Destroyer**<sup>1</sup> will *permanently* delete any data it overwrites!
 
 ## About Disk Destroyer
 
-**DiskDestroyer**<sup>1</sup> is a utility that writes random data to a drive's free space.
+**Disk Destroyer**<sup>1</sup> is a utility that writes random data to a drive's free space.
 
 ## How it works
 
-**DiskDestroyer**<sup>1</sup> creates (or appends) random data to a file named `disk_destroyer.dat` until the drive is full.
+**Disk Destroyer**<sup>1</sup> creates (or appends) random data to a file named `disk_destroyer.dat` until the drive is full.
 
 ### I'll do you one better: Why it works?
 
@@ -52,56 +52,36 @@ When you "delete" a file, only the *reference* to that file is erased, not the *
 
 The file still exists and is marked as *free space*, and will remain as such until it's location is overwritten with new data. And until it's overwritten, data recovery software can recover the file.
 
-To ensure the file is permanently deleted, 
-
-• Overwrite / Data Sanitization: Use dedicated wiping tools (such as Eraser or DBAN) that write random patterns of data over every sector of the drive.
-• Physical Destruction: For absolute security, physically destroying the drive (such as punching holes through the metal platters or shredding the device) makes data recovery impossible.
-
-
-## Getting started
-
-### Before you begin
-
-
-
-
-
-
-
-
+To ensure the file is permanently deleted, you need to write random patterns of data over the file's location.
 
 ### Requirements
 
-| Requirement | Minimum version | Notes |
-|-------------|-----------------|-------|
-| [.NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) | 10.0+ | Required to build and run |
-| Windows OS | Any modern version | Tested on Windows platforms |
-| Administrator privileges | Recommended | May be required for certain drives |
+### Before you begin
+
+* [.NET 10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
+
+**Disk Destroyer**<sup>1</sup> has only been tested on Windows.
 
 ## Installing
 
-### Prerequisites
+**Disk Destroyer**<sup>1</sup> is a portable application, and doesn't need to be installed.
 
-Ensure you have the [.NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) installed and available in your PATH.
+All you need to do is:
 
-### Quick Start (Development)
-
-```bash
-# Clone or navigate to the repository
-cd D:\Repositories\APCP\DiskDestroyer
-
-# Restore dependencies
-dotnet restore
-
-# Build the project
-dotnet build --configuration Release
-```
+1. Download the latest [release](https://github.com/APrettyCoolProgram/DiskDestroyer/releases)
+2. Extract the downloaded file to the root of the drive you want to destroy<sup>1</sup>
 
 ## Usage
 
-### Basic Usage
+**Disk Destroyer**<sup>1</sup> is run from a command prompt.
 
-Run DiskDestroyer from a command prompt. The application will automatically use the current drive and default settings:
+Here's how you do it:
+
+1. Open a command prompt
+2. Navigate to the root of the drive you want to destroy<sup>1</sup>
+3. Type `DiskDestroyer`
+
+
 
 ```bash
 cd D:\Repositories\APCP\DiskDestroyer
