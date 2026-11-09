@@ -2,8 +2,8 @@
 
 <div align="center">
 
-  <img src="../.github/logo/RepositoryTemplate-336x220.png" alt="Repository Template">
-
+  <img src="../.github/logo/DiskDestroyer-256x256.png" alt="DiskDestroyer">
+  
   <h1>Changelog</h1>
 
 </div>
